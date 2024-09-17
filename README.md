@@ -1,7 +1,15 @@
 # ember-download-files-app
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+I am excited to share my first ever Ember project. 
+ This Single Page Application enables users to choose files for downloading. The download button remains disabled unless at least one file is selected. Upon selecting files, the button activates. When clicked, it triggers an alert that details which files are ready for download and which are not, based on their status. Only files with "available" status qualify for downloading.
+
+ <img width="1218" alt="image" src="https://github.com/user-attachments/assets/b76700dd-004d-4a37-8a5f-4a8d0fe2bb33">
+
+
+The implementation is done using Ember.js, HTML and CSS. No other frameworks are used for the layout and styling. 
+I have followed the architecture that align with Ember's evolution towards more modular and component-centric development, which is not only more efficient but also aligns with modern JavaScript development practices.
+
+
 
 ## Prerequisites
 
@@ -24,10 +32,6 @@ You will need the following things properly installed on your computer.
 - Visit your app at [http://localhost:4200](http://localhost:4200).
 - Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
 ### Running Tests
 
 - `npm run test`
@@ -42,15 +46,3 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 - `npm exec ember build` (development)
 - `npm run build` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-- [ember.js](https://emberjs.com/)
-- [ember-cli](https://cli.emberjs.com/release/)
-- Development Browser Extensions
-  - [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  - [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
