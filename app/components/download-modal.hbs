@@ -1,0 +1,8 @@
+<div class="modal {{if @isOpen "open"}}">
+  <div class="modal-content">
+    <span class="close-button" {{on "click" @onClose}}>×</span>
+    <div class="modal-body">
+      {{yield}}
+    </div>
+  </div>
+</div>

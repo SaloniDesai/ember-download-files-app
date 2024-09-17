@@ -1,0 +1,69 @@
+<div class="grid-container">
+    
+    {{!-- Table for Grid Layout --}}
+    <table class="grid-table" role="grid"
+        aria-label="File Selection Grid"
+        aria-readonly="false">
+        <thead>
+            <tr class="grid-header-controls">
+                <th id="select-all-section">
+                    <input type="checkbox"
+                        id="select-all"
+                        aria-label="Select All files"
+                        class="{{if this.isIndeterminate "indeterminate-checkbox" "select-checkbox"}}"
+                        {{on "change" this.toggleSelectAll}}
+                        checked={{this.allSelected}}>
+                    <label for="select-all">
+                        {{#if this.hasSelectedFiles}}
+                            Selected {{this.selectedFiles.length}}
+                        {{else}}
+                            None Selected
+                        {{/if}}     
+                    </label>
+                </th>
+                <th id="download-button-section">
+                    <button type="button"
+                    class="download-btn"
+                    disabled = {{unless this.hasSelectedFiles true false}}
+                    {{on "click" this.downloadSelected}}>
+                     <span class="material-icons">download</span>
+                    Download Selected
+                    </button>
+                </th>
+            </tr>
+    
+            <tr class="grid-header">
+                <th scope="col"><div class="grid-header-item"></div></th>
+                {{#each (keys (get @files "0")) as |key|}}
+                <th scope="col">
+                    <div class="grid-header-item">{{key}}</div>
+                </th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each @files as |file index|}}
+            <tr class="grid-item {{if (this.hasThisFile file) 'selected-row'}}">
+                <td>
+                    <input type="checkbox"
+                        id="select-{{index}}"
+                        class="select-box"
+                        checked = {{this.hasThisFile file}}
+                        {{on "change" (fn this.toggleFileSelection file)}}>
+                <label for="select-{{index}}" class="visually-hidden">Select {{file.name}}</label> 
+                </td>
+                <td>{{file.name}}</td>
+                <td>{{file.device}}</td>
+                <td>{{file.path}}</td>
+                <td class={{if (eq file.status "available") "available"}}>{{file.status}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table> 
+
+    {{#if this.showModal}}
+    <DownloadModal @isOpen={{this.showModal}} @onClose={{this.closeModal}}>
+      <div>{{{this.modalContent}}}</div>
+    </DownloadModal>
+  {{/if}}
+</div>
