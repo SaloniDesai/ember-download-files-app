@@ -6,12 +6,17 @@ import { hbs } from 'ember-cli-htmlbars';
 module('Integration | Helper | keys', function (hooks) {
   setupRenderingTest(hooks);
 
-  // TODO: Replace this with your real tests.
   test('it renders', async function (assert) {
-    this.set('inputValue', '1234');
+    this.set('inputObject', {
+      name: 'file1',
+      device: 30,
+      status: 'available',
+    });
 
-    await render(hbs`{{keys this.inputValue}}`);
+    await render(
+      hbs`{{#each (keys this.inputObject) as |key|}}{{key}}{{/each}}`,
+    );
 
-    assert.dom().hasText('1234');
+    assert.dom().hasText('NameDeviceStatus');
   });
 });

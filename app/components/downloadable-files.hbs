@@ -1,24 +1,22 @@
 <div class="grid-container">
-    
     {{!-- Table for Grid Layout --}}
     <table class="grid-table" role="grid"
         aria-label="File Selection Grid"
         aria-readonly="false">
         <thead>
             <tr class="grid-header-controls">
-                <th id="select-all-section">
+                <th id="select-all-section" aria-labelledby="select-all-label">
                     <input type="checkbox"
                         id="select-all"
-                        aria-label="Select All files"
                         class="{{if this.isIndeterminate "indeterminate-checkbox" "select-checkbox"}}"
                         {{on "change" this.toggleSelectAll}}
                         checked={{this.allSelected}}>
-                    <label for="select-all">
+                    <label for="select-all" aria-live="polite">
                         {{#if this.hasSelectedFiles}}
                             Selected {{this.selectedFiles.length}}
                         {{else}}
                             None Selected
-                        {{/if}}     
+                        {{/if}} 
                     </label>
                 </th>
                 <th id="download-button-section">
@@ -63,7 +61,7 @@
 
     {{#if this.showModal}}
     <DownloadModal @isOpen={{this.showModal}} @onClose={{this.closeModal}}>
-      <div>{{{this.modalContent}}}</div>
+      <div>{{this.sanitizedModalContent}}</div>
     </DownloadModal>
   {{/if}}
 </div>

@@ -151,7 +151,7 @@ input[type="checkbox"].indeterminate-checkbox::before {
 }
 
 /* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .grid-container {
     overflow-x: auto;
   }
@@ -162,7 +162,7 @@ input[type="checkbox"].indeterminate-checkbox::before {
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .grid-header,
   .grid-item {
     min-width: 100px; /* Reduce column width on very small screens */
@@ -204,15 +204,17 @@ input[type="checkbox"].indeterminate-checkbox::before {
 }
 
 .close-button {
-    position: absolute;
-    top: 28%;
-    right: 10%;
-    color: rgb(247 243 243);
-    float: right;
-    font-size: 1.5em;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 1000;
+  position: absolute;
+  top: 28%;
+  right: 10%;
+  color: #fff;
+  background: none;
+  border: none;
+  float: right;
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
 }
 
 .close-button:hover,

@@ -21,6 +21,7 @@ module.exports = {
   ],
   env: {
     browser: true,
+    qunit: true,
   },
   rules: {},
   overrides: [
