@@ -1,40 +1,36 @@
 <div class="grid-container">
     {{!-- Table for Grid Layout --}}
-    <table class="grid-table" role="grid"
-        aria-label="File Selection Grid"
-        aria-readonly="false">
+    <table class="grid-table" role="grid" aria-label="File Selection Grid" aria-readonly="false">
         <thead>
             <tr class="grid-header-controls">
                 <th id="select-all-section" aria-labelledby="select-all-label">
-                    <input type="checkbox"
-                        id="select-all"
-                        class="{{if this.isIndeterminate "indeterminate-checkbox" "select-checkbox"}}"
-                        {{on "change" this.toggleSelectAll}}
-                        checked={{this.allSelected}}>
-                    <label for="select-all" aria-live="polite">
+                    <input type="checkbox" id="select-all" class="{{if this.isIndeterminate "
+                        indeterminate-checkbox" "select-checkbox" }}" {{on "change" this.toggleSelectAll}}
+                        checked={{this.allSelected}} tabindex="0">
+                    <label for="select-all" aria-live="polite" tabindex="0">
                         {{#if this.hasSelectedFiles}}
-                            Selected {{this.selectedFiles.length}}
+                        Selected {{this.selectedFiles.length}}
                         {{else}}
-                            None Selected
-                        {{/if}} 
+                        None Selected
+                        {{/if}}
                     </label>
                 </th>
                 <th id="download-button-section">
-                    <button type="button"
-                    class="download-btn"
-                    disabled = {{unless this.hasSelectedFiles true false}}
-                    {{on "click" this.downloadSelected}}>
-                     <span class="material-icons">download</span>
-                    Download Selected
+                    <button type="button" class="download-btn" disabled={{unless this.hasSelectedFiles true false}}
+                        {{on "click" this.downloadSelected}} tabindex="0">
+                        <span class="material-icons">download</span>
+                        Download Selected
                     </button>
                 </th>
             </tr>
-    
+
             <tr class="grid-header">
-                <th scope="col"><div class="grid-header-item"></div></th>
+                <th scope="col">
+                    <div class="grid-header-item"></div>
+                </th>
                 {{#each (keys (get @files "0")) as |key|}}
                 <th scope="col">
-                    <div class="grid-header-item">{{key}}</div>
+                    <div class="grid-header-item" tabindex="0">{{key}}</div>
                 </th>
                 {{/each}}
             </tr>
@@ -43,25 +39,22 @@
             {{#each @files as |file index|}}
             <tr class="grid-item {{if (this.hasThisFile file) 'selected-row'}}">
                 <td>
-                    <input type="checkbox"
-                        id="select-{{index}}"
-                        class="select-box"
-                        checked = {{this.hasThisFile file}}
-                        {{on "change" (fn this.toggleFileSelection file)}}>
-                <label for="select-{{index}}" class="visually-hidden">Select {{file.name}}</label> 
+                    <input type="checkbox" id="select-{{index}}" class="select-box" checked={{this.hasThisFile file}}
+                        {{on "change" (fn this.toggleFileSelection file)}} tabindex="0">
+                    <label for="select-{{index}}" class="visually-hidden" tabindex="0">Select {{file.name}}</label>
                 </td>
                 <td>{{file.name}}</td>
                 <td>{{file.device}}</td>
                 <td>{{file.path}}</td>
-                <td class={{if (eq file.status "available") "available"}}>{{file.status}}</td>
+                <td class="status-cell {{if (eq file.status "available") "available" }}" tabindex="0">{{file.status}}</td>
             </tr>
             {{/each}}
         </tbody>
-    </table> 
+    </table>
 
     {{#if this.showModal}}
-    <DownloadModal @isOpen={{this.showModal}} @onClose={{this.closeModal}}>
-      <div>{{this.sanitizedModalContent}}</div>
+    <DownloadModal @isOpen={{this.showModal}} @onClose={{this.closeModal}} tabindex="0">
+        <div>{{this.sanitizedModalContent}}</div>
     </DownloadModal>
-  {{/if}}
+    {{/if}}
 </div>

@@ -8,6 +8,13 @@ export default class DownloadableFiles extends Component {
   @tracked showModal = false;
   @tracked modalContent = '';
 
+  /**
+   * This getter property sanitizes the modal content to prevent unsafe HTML injection.
+   * This is necessary when dynamically rendering HTML content in the modal to ensure it is treated as
+   * safe and not escaped by the template engine.
+   *
+   */
+
   get sanitizedModalContent() {
     return htmlSafe(this.modalContent);
   }
@@ -125,13 +132,13 @@ export default class DownloadableFiles extends Component {
     // Create message strings for each group
     const downloadableDetails =
       downloadableFiles.length > 0
-        ? `Files available for download with active status:\n${downloadableFiles.map((file) => `Device: ${file.device}, Path: ${file.path}`).join('\n')}`
-        : 'No files available for download.';
+        ? `The following files downloaded successfully:\n${downloadableFiles.map((file) => `Device: ${file.device}, Path: ${file.path}`).join('\n')}`
+        : 'No file selected has an available status.';
 
     const nonDownloadableDetails =
       nonDownloadableFiles.length > 0
-        ? `Files not available for download:\n${nonDownloadableFiles.map((file) => `Device: ${file.device}, Path: ${file.path}`).join('\n')}`
-        : 'All selected files are available for download.';
+        ? `The following files can not be downloaded:\n${nonDownloadableFiles.map((file) => `Device: ${file.device}, Path: ${file.path}`).join('\n')}`
+        : 'All selected files are ready for download.';
 
     // Set modal content and show the modal
     this.modalContent = `
@@ -141,7 +148,6 @@ export default class DownloadableFiles extends Component {
         </div>
   `;
     this.showModal = true;
-    // alert(`${downloadableDetails}\n\n${nonDownloadableDetails}`);
   }
 
   /**

@@ -1,7 +1,7 @@
-<div class="modal {{if @isOpen "open"}}" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+<div class="modal {{if @isOpen " open"}}" role="dialog" aria-modal="true" aria-labelledby="modal-title">
   <div class="modal-content">
     <button class="close-button" aria-label="Close" type="button" {{on "click" @onClose}}>×</button>
-    <h2 id="modal-title">File Status Update</h2>
+    <h2 id="modal-title">Download summary</h2>
     <div class="modal-body">
       {{yield}}
     </div>

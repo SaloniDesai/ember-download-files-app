@@ -6,7 +6,7 @@ module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
     // Add options here
   });
-  app.import('app/component/downloadable-files.css');
+  app.import('app/styles/app.css');
 
   return app.toTree();
 };
