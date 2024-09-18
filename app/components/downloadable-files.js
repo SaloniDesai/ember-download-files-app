@@ -132,12 +132,12 @@ export default class DownloadableFiles extends Component {
     // Create message strings for each group
     const downloadableDetails =
       downloadableFiles.length > 0
-        ? `The following files downloaded successfully:\n${downloadableFiles.map((file) => `Device: ${file.device}, Path: ${file.path}`).join('\n')}`
+        ? `The following files were downloaded successfully:\n${downloadableFiles.map((file) => `Device: ${file.device}, Path: ${file.path}`).join('\n')}`
         : 'No file selected has an available status.';
 
     const nonDownloadableDetails =
       nonDownloadableFiles.length > 0
-        ? `The following files can not be downloaded:\n${nonDownloadableFiles.map((file) => `Device: ${file.device}, Path: ${file.path}`).join('\n')}`
+        ? `The following files could not be downloaded:\n${nonDownloadableFiles.map((file) => `Device: ${file.device}, Path: ${file.path}`).join('\n')}`
         : 'All selected files are ready for download.';
 
     // Set modal content and show the modal
